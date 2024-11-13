@@ -72,17 +72,9 @@ public class Main {
 			System.out.printf("\n★ 第%d回戦 ==========\n", count);
 
 			System.out.println("\n[人間のターン！]\n");
-			
-			/*
-			 * choiceHuman ... 引数でもらった人間グループリストからランダムに1人を選択し、その結果を戻り値とするメソッド choiceMonster
-			 * ... 引数でもらったモンスターグループリストからランダムに1人を選択し、その結果を戻り値とするメソッド showGroupInfos ...
-			 * 引数でもらった人間グループリストとモンスターグループリストのそれぞれの情報一覧を表示するメソッド
-			 */
 
 			// 人間グループから1人選択
 			Human human = choiceHuman(humans);
-			
-			//事前に「List<Human> humans = new ArrayList<>();」で用意した List<Human>型の humans変数を引数で渡し、Human型の変数 humanにより、戻り値を受け取っています。
 
 			// モンスターグループから1人選択
 			Monster monster = choiceMonster(monsters);
@@ -96,33 +88,38 @@ public class Main {
                 System.out.printf("\n ★ 「%s」は倒れた。\n", monster.getName());
                 monsters.remove(monster);
             }
-
-//			Livingの getHp()メソッドにより HPを取得して 0以下かを判定しています。
-//			monsters.remove(monster);により、モンスターのリストから当該モンスター要素を削除しています！
             
 			// モンスターグループに誰もいなくなれば、人間グループの勝利
-
-			System.out.println("\n[モンスターのターン！]\n");
-			
-			// 人間グループから1人選択-
-			
-			// モンスターグループから1人選択
-			
-			// 選ばれたモンスターが、選ばれた人間を攻撃
-			monster.attack(human);
-
-			// 人間のHPが0以下になれば、人間は倒れ、その人間をモンスターグループから削除
-			// ★モンスターグループに誰もいなくなれば、人間グループの勝利
             if (monsters.isEmpty()) {
                 System.out.println("\n★★ ==== 決着がついた！！ ==== ★★");
                 System.out.println("\n #### 人間達は勝利した！！ ####");
                 break;
             }
-            
-			//isEmpty()により、リストが空かどうかを判定しています。
-            //空であれば、break;によりループを抜けてプログラムを終了させます！
+
+			System.out.println("\n[モンスターのターン！]\n");
+			
+			// 人間グループから1人選択-
+			Human human1 = choiceHuman(humans);
+			
+			// モンスターグループから1人選択
+			Monster monster1 = choiceMonster(monsters);
+			
+			// 選ばれたモンスターが、選ばれた人間を攻撃
+			monster1.attack(human1);
+
+			// 人間のHPが0以下になれば、人間は倒れ、その人間を人間グループから削除
+			if (human.getHp() <= 0) {
+                System.out.printf("\n ★ 「%s」は倒れた。\n", human.getName());
+                humans.remove(human);
+            }
 
 			// 人間グループに誰もいなくなれば、人間グループの敗北
+            
+            if (humans.isEmpty()) {
+                System.out.println("\n★★ ==== 決着がついた！！ ==== ★★");
+                System.out.println("\n #### モンスター達は勝利した！！ ####");
+                break;
+            }
 			
 			// 現在の各グループの状態を一覧表示
 			showGroupInfos(humans, monsters);
@@ -166,3 +163,5 @@ public class Main {
 	}
 
 }
+
+

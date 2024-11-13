@@ -18,7 +18,6 @@ public abstract class Human extends Living {
     // コンストラクタ
     public Human(String name, String weapon) {//mainで使う部品を用意している
         super(name, weapon);  // ★superをつかって、スーパークラス（この場合 Living）のコンストラクタを実行
-        System.out.println("はい");
     }
 
     // attackメソッドのオーバーライド
