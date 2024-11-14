@@ -23,13 +23,9 @@ public class Main {
 		
 		Human brave = new Brave("沖田総司","剣"); //Braveクラスのインスタンスを生成Braveのコンストラクタに名前と武器を渡して保管する
 		
-		System.out.println("[名前]:" + brave.getName() + "," + "[ヒットポイント]:" +  brave.getHp() +"[攻撃力]:" + brave.getOffensive());
-		
 		Human fighter = new Fighter("金太郎","斧"); //Fighterクラスのインスタンスを生成
-		System.out.println("[名前]:" + fighter.getName() + "," + "[ヒットポイント]:" +  fighter.getHp() +"[攻撃力]:" + fighter.getOffensive());
 		
 		Human wizard = new Wizard("安倍晴明","魔法"); //Wizardクラスのインスタンスを生成
-		System.out.println("[名前]:" + wizard.getName() + "," + "[ヒットポイント]:" +  wizard.getHp() +"[攻撃力]:" + wizard.getOffensive());
 		
 
 		// 人間グループのリストを空で生成
@@ -43,13 +39,10 @@ public class Main {
 		// Slime（スライム）, Oak（オーク）, Dragon（ドラゴン）クラスの各インスタンスを生成
 		
 		Monster slime = new Slime("キングスライム","体当たり"); 
-		System.out.println("[名前]:" + slime.getName() + "," + "[ヒットポイント]:" +  slime.getHp() +"[攻撃力]:" + slime.getOffensive());
 		
 		Monster oak = new Oak("オークキング","槍"); 
-		System.out.println("[名前]:" + oak.getName() + "," + "[ヒットポイント]:" +  oak.getHp() +"[攻撃力]:" + oak.getOffensive());
 		
 		Monster dragon = new Dragon("紅龍","炎"); 
-		System.out.println("[名前]:" + dragon.getName() + "," + "[ヒットポイント]:" +  dragon.getHp() +"[攻撃力]:" + dragon.getOffensive());
 
 		// モンスターグループのリストを空で生成
 		List<Monster> monsters = new ArrayList<>();
@@ -108,9 +101,9 @@ public class Main {
 			monster1.attack(human1);
 
 			// 人間のHPが0以下になれば、人間は倒れ、その人間を人間グループから削除
-			if (human.getHp() <= 0) {
-                System.out.printf("\n ★ 「%s」は倒れた。\n", human.getName());
-                humans.remove(human);
+			if (human1.getHp() <= 0) {
+                System.out.printf("\n ★ 「%s」は倒れた。\n", human1.getName());
+                humans.remove(human1);
             }
 
 			// 人間グループに誰もいなくなれば、人間グループの敗北
@@ -163,5 +156,4 @@ public class Main {
 	}
 
 }
-
 
